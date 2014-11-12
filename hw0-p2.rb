@@ -20,6 +20,7 @@ end
 def binary_multiple_of_4?(s)
     return true if s =~ /^0+$/
     x = s.to_i
+    return false if x == 0
     x % 4 == 0
 end
 
@@ -48,6 +49,7 @@ def test_binary_multiple_of_4
     raise "0 should be multple of 4" unless binary_multiple_of_4?("0")
     raise "16 should be multple of 4" unless binary_multiple_of_4?("16")
     raise "10 should not be multple of 4" if binary_multiple_of_4?("10")
+    raise "aa should not be multple of 4" if binary_multiple_of_4?("aa")
     puts "test_binary_multiple_of_4 passed"
 end
 
