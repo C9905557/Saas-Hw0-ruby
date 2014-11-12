@@ -18,13 +18,8 @@ end
 # and returns true if the string represents a binary number that is a multiple of 4.
 # NOTE: be sure it returns false if the string is not a valid binary number!
 def binary_multiple_of_4?(s)
-    return true if s =~ /^0+$/
-    x = s.to_i
-    return false if x == 0
-    x % 4 == 0
+    return (s == "0" or s =~ /^[01]*00$/)
 end
-
-puts "sdjfsdlls".to_i
 
 def test_hello
     raise "Should be: 'Hello, Ivan'" unless hello("Ivan") == "Hello, Ivan"
@@ -45,10 +40,12 @@ end
 test_starts_with_consonant
 
 def test_binary_multiple_of_4
-    raise "0 should be multple of 4" unless binary_multiple_of_4?("000")
+    raise "000 should be multple of 4" unless binary_multiple_of_4?("000")
     raise "0 should be multple of 4" unless binary_multiple_of_4?("0")
-    raise "16 should be multple of 4" unless binary_multiple_of_4?("16")
-    raise "10 should not be multple of 4" if binary_multiple_of_4?("10")
+    raise "1111110001 should be multple of 4" unless binary_multiple_of_4?("10100")
+    raise "1111110001 should not be multple of 4" if binary_multiple_of_4?("1111110001")
+    raise "111111111 should not be multple of 4" if binary_multiple_of_4?("111111111")
+    raise "001100110011 should not be multple of 4" if binary_multiple_of_4?("001100110011")
     raise "aa should not be multple of 4" if binary_multiple_of_4?("aa")
     puts "test_binary_multiple_of_4 passed"
 end
