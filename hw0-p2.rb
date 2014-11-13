@@ -13,6 +13,7 @@ def starts_with_consonant?(s)
   #s =~ /^[^aeiou]/i && s =~ /^[a-z]/i
   # Alternate version with string index; 
   # .index returns a number if the char is found == true; returns nil == false otherwise
+  return false if s.empty?
   "bcdfghjklmnpqrstvwxyz".index(s[0].downcase)
 end
 
@@ -38,6 +39,7 @@ def test_starts_with_consonant
     raise "Starts with U" if starts_with_consonant?('Uasdfsdf-')
     raise "Starts with d" unless starts_with_consonant?('dasdfsdf-')
     raise "Starts with D" unless starts_with_consonant?('Ddasdfsdf-')
+    raise "Starts with null string" if starts_with_consonant?('')
     puts 'test_starts_with_consonant passed'
 end
 
